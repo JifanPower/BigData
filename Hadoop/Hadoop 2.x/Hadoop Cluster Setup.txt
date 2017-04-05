@@ -1,0 +1,25 @@
+/**Jason,Jinfan Power 2017.04.05
+
+Tool
+    If Ubuntu,lrzsz Can Upload File. apt-get install lrzsz (Need Network)
+
+Prerequisites
+    Install Java.
+    Download a stable version of Hadoop from Apache mirrors.
+
+Configuring Environment of Hadoop Daemons
+    etc/hadoop/hadoop-env.sh
+    etc/hadoop/mapred-env.sh
+    etc/hadoop/yarn-env.sh
+
+    1)etc/hadoop/hadoop-env.sh
+        JAVA_HOME for each remote node.
+    2)etc/hadoop/mapred-env.sh
+    3)etc/hadoop/yarn-env.sh
+
+Configuring the Hadoop Daemons
+    HDFS
+        *etc/hadoop/core-site.xml
+        Parameter	        Value	        Notes
+        fs.defaultFS	    NameNode URI	hdfs://host:port/
+        io.file.buffer.size	131072	        Size of read/write buffer used in SequenceFiles.
