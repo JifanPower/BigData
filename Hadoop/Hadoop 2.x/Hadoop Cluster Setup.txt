@@ -7,6 +7,19 @@ Prerequisites
     Install Java.
     Download a stable version of Hadoop from Apache mirrors.
 
+* hdfs
+    * hadoop-env.sh
+    * core-site.xml
+    * hdfs-site.xml
+    * slaves
+* yarn
+    * yarn-env.sh
+    * yarn-site.xml
+    * slaves
+* mapredue
+    * mapred-env.sh
+    * mapred-site.xml
+
 Configuring Environment of Hadoop Daemons
     etc/hadoop/hadoop-env.sh
     etc/hadoop/mapred-env.sh
@@ -15,11 +28,47 @@ Configuring Environment of Hadoop Daemons
     1)etc/hadoop/hadoop-env.sh
         JAVA_HOME for each remote node.
     2)etc/hadoop/mapred-env.sh
+        JAVA_HOME for mapredue node.
     3)etc/hadoop/yarn-env.sh
+        JAVA_HOME for yarn node.
 
 Configuring the Hadoop Daemons
-    HDFS
-        *etc/hadoop/core-site.xml
-        Parameter	        Value	        Notes
+    hdfs
+        etc/hadoop/core-site.xml
+        Parameter	        Value           Notes
         fs.defaultFS	    NameNode URI	hdfs://host:port/
+        hadoop.tmp.dir      hadoop tmp dir  default:/tmp/hadoop-${user.name}
+        fs.trash.interval   10080           Number of minutes default:0
         io.file.buffer.size	131072	        Size of read/write buffer used in SequenceFiles.
+        
+        NameNode
+            etc/hadoop/hdfs-site.xml
+                dfs.namenode.secondary.http-address host:port
+            slaves
+                host1
+                host2
+                host3
+                ... 
+
+        DataNode
+            No Need Change Configuration
+
+        Secondary NameNode
+            No Need Change Configuration
+
+    yarn
+        etc/hadoop/yarn-site.xml
+            ResourceManager
+                No Need Change Configuration
+                
+            NodeManager
+                Parameter                           Value            
+                yarn.log-aggregation-enable         true
+                yarn.log-aggregation.retain-seconds 86400
+                yarn.nodemanager.aux-services       mapreduce_shuffle
+                yarn.nodemanager.resource.memory-mb 1024
+
+    mapredue
+        etc/hadoop/mapred-site.xml
+                Parameter	                        Value	Notes
+                mapreduce.framework.name	        yarn	Execution framework set to Hadoop YARN.
