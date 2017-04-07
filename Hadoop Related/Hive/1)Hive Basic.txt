@@ -1,0 +1,25 @@
+/**Jason,Jinfan Power 2017.04.07**/
+
+                        Hive Basic
+
+Prerequisites
+    Sql
+    Java Environment
+    Hadoop 2.x
+
+Origin
+    Facbook OpenSource   
+
+The Apache Hive ™ data warehouse software facilitates reading, writing, and managing large datasets residing in distributed storage using SQL. Structure can be projected onto data already in storage. A command line tool and JDBC driver are provided to connect users to Hive.
+    HQL--Query Interface.
+    Data save in HDFS.
+    YARN Exec
+    Query by MapReduce.
+
+    HQL->MapReduce
+    
+
+
+RDBMS
+    Table
+    
