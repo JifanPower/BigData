@@ -1,0 +1,55 @@
+/**Jason,Jinfan Power 2017.04.06**/
+
+                        HDFS NameNode HA
+                                Quorum Journal Manager 
+
+Two NameNode
+    Active,Standby
+    Standby will combie fsystem and JournalLog,So No
+    need Secondary NameNode.
+
+    hdfs-site.xml
+    Parameter                               Value       Notes
+    df.nameservices                         ns1         nameservice ID
+    df.ha.namenodes.ns1                     nn1,n n2    namenode IDs
+    dfs.namenode.rpc-address.ns1.nn1        host:port   default:8020
+    dfs.namenode.rpc-address.ns1.nn2        host:port   default:8020
+    dfs.namenode.http-address.ns1.nn1       host:port   default:50070
+    dfs.namenode.http-address.ns1.nn2       host:port   default:50070
+    dfs.namenode.shared.edits.dir           qjournal://h1:8485;h2:8485;h3:8485/ns1
+    
+    core-site.xml
+    fs.defaultFS                            hdfs://ns1
+        
+JournalNode
+    At least 3 JournalNode deamons.
+    hdfs-site.xml
+    Parameter                 Value
+    dfs.journalnode.edits.dir /path/to/journal/local/data
+
+Proxy
+    hdfs-site.xml
+    Parameter                               Value       
+    dfs.client.failover.proxy.provider.ns1  org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
+
+Fence
+    sshfence - SSH to the Active NameNode and kill the process
+    prerequisites:SSH can login without password between the two NameNode.
+    hdfs-site.xml
+    Parameter                               Value          
+    dfs.ha.fencing.methods                  sshfence    
+    dfs.ha.fencing.ssh.private-key-files    /home/exampleuser/.ssh/id_rsa
+
+Automatic Failover
+    By ZooKeeper
+    
+    Configuration
+    hdfs-site.xml
+    Parameter                           Value
+    dfs.ha.automatic-failover.enabled   true
+    ha.zookeeper.quorum                 zk1.example.com:2181,zk2.example.com:2181,zk3.example.com:2181
+    
+    Startup
+    bin/hdfs zkfc -formatZK
+
+    Verifying automatic failover

@@ -1,0 +1,48 @@
+/**Jason,Jinfan Power 2017.04.07**/
+
+                        Hadoop Basic
+
+Prerequisites
+    Linux Basic
+    Java[Option]
+    Sql[Option]
+
+Hadoop Origin
+    Google
+        GFS          ->     HDFS
+        MapReduce    ->     MapReduce
+        BigTable     ->     HBase
+
+Hadoop Modules
+Hadoop Common: The common utilities that support the other Hadoop modules.
+Hadoop Distributed File System (HDFS™): A distributed file system that provides high-throughput access to application data.
+Hadoop YARN: A framework for job scheduling and cluster resource management.
+Hadoop MapReduce: A YARN-based system for parallel processing of large data sets.
+
+Hadoop-related projects 
+HBase™: A scalable, distributed database that supports structured data storage for large tables.
+Hive™: A data warehouse infrastructure that provides data summarization and ad hoc querying.
+ZooKeeper™: A high-performance coordination service for distributed applications.
+
+Hadoop Directory
+    /etc    config files
+    /bin    executable files
+    /sbin   sh files
+    ...
+
+Hadoop Modules Detail
+    HDFS
+        function
+
+        namenode
+        datanode
+        secondary namenode
+
+    YARN
+        resource manager
+        node manager
+
+    MapReduce
+        Map
+        Reduce
+    

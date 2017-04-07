@@ -1,4 +1,4 @@
-/**Jason,Jinfan Power 2017.04.06
+/**Jason,Jinfan Power 2017.04.06**/
 
                         Hadoop Cluster Setup
 
