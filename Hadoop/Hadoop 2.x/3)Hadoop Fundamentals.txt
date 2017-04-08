@@ -1,0 +1,18 @@
+/**Jason,Jinfan Power 2017.04.08**/
+
+                        Hadoop Fundamentals
+
+Data Storage,Data Query And Data Analysis
+    Traditional         RDBMS	                    MapReduce
+    Data size	        Gigabytes	                Petabytes
+    Access	            Interactive and batch	    Batch
+    Updates	            Read and write many times	Write once, read many times
+    Transactions	    ACID	                    None
+    Structure	        Schema-on-write	            Schema-on-read
+    Integrity	        High	                    Low
+    Scaling	            Nonlinear	                Linear
+
+MapReduce
+    MapReduce is a programming model for data processing.
+    MAP AND REDUCE
+    MapReduce works by breaking the processing into two phases: the map phase and the reduce phase. Each phase has key-value pairs as input and output, the types of which may be chosen by the programmer. The programmer also specifies two functions: the map function and the reduce function.

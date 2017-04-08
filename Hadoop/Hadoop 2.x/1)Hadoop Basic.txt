@@ -1,4 +1,4 @@
-/**Jason,Jinfan Power 2017.04.07**/
+/**Jason,Jinfan Power 2017.04.08**/
 
                         Hadoop Basic
 
@@ -12,17 +12,19 @@ Hadoop Origin
         GFS          ->     HDFS
         MapReduce    ->     MapReduce
         BigTable     ->     HBase
-
+    Hadoop was created by Doug Cutting, the creator of Apache Lucene, the widely used text search library. 
+    Hadoop has its origins in Apache Nutch, an open source web search engine, itself a part of the Lucene project.
+    
 Hadoop Modules
-Hadoop Common: The common utilities that support the other Hadoop modules.
-Hadoop Distributed File System (HDFS™): A distributed file system that provides high-throughput access to application data.
-Hadoop YARN: A framework for job scheduling and cluster resource management.
-Hadoop MapReduce: A Y   ARN-based system for parallel processing of large data sets.
+    Hadoop Common: The common utilities that support the other Hadoop modules.
+    Hadoop Distributed File System (HDFS™): A distributed file system that provides high-throughput access to application data.
+    Hadoop YARN: A framework for job scheduling and cluster resource management.
+    Hadoop MapReduce: A Y   ARN-based system for parallel processing of large data sets.
 
 Hadoop-Related Projects 
-HBase™: A scalable, distributed database that supports structured data storage for large tables.
-Hive™: A data warehouse infrastructure that provides data summarization and ad hoc querying.
-ZooKeeper™: A high-performance coordination service for distributed applications.
+    HBase™: A scalable, distributed database that supports structured data storage for large tables.
+    Hive™: A data warehouse infrastructure that provides data summarization and ad hoc querying.
+    ZooKeeper™: A high-performance coordination service for distributed applications.
 
 Hadoop Directory
     /etc    config files
@@ -62,15 +64,15 @@ Hadoop Modules Introduce
         It is Hadoop’s cluster resource management system.
         
         resource manager
-        Manage the use of resources across the cluster.
+        Resource manager manage the use of resources across the cluster.
 
         node manager
         Node managers running on all the nodes in the cluster to launch and monitor containers.
     
     MapReduce
-
-
-
+        MapReduce is a programming model for data processing.
+        MapReduce works by breaking the processing into two phases,Each phase has key-value pairs as input and output.
+        (input) <k1, v1> -> map -> <k2, v2> -> combine -> <k2, v2> -> reduce -> <k3, v3> (output)
 
 Hadoop Modules Startup
     HDFS
