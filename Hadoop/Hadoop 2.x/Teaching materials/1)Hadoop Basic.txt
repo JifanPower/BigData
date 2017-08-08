@@ -1,0 +1,87 @@
+/**Jason,Jinfan Power 2017.08.05**/
+
+Hadoop Basic
+
+## Hadoop
+scale upScale Up是指Application可以在垂直方向上扩展。一般对单台机器而言，Scale Up值得是当某个计算节点（机器）添加更多的CPU Cores，存储设备，使用更大的内存时，应用可以很充分的利用这些资源来提升自己的效率从而达到很好的扩展性。
+computation 计算
+prone to failures 容易失败
+[prəun]
+
+## Prerequisites
+    Linux Basic:Linux Command Line
+    Java (MapReduce)
+    Sql (hive)
+
+Hadoop Origin
+    GFS
+    Google File System is a proprietary distributed file system developed by Google to provide efficient, reliable access to data using large clusters of commodity hardware.
+    GFS的主要假设如下：
+GFS的服务器都是普通的商用计算机，并不那么可靠，集群出现结点故障是常态。
+因此必须时刻监控系统的结点状态，当结点失效时，必须能检测到，并恢复之。
+系统存储适当数量的大文件。理想的负载是几百万个文件，文件一般都超过100MB，GB级别以上的文件是很常见的，必须进行有效管理。
+支持小文件，但不对其进行优化。
+负载通常包含两种读：大型的流式读（顺序读），和小型的随机读。
+前者通常一次读数百KB以上，后者通常在随机位置读几个KB。
+负载还包括很多连续的写操作，往文件追加数据（append）。
+文件很少会被修改，支持随机写操作，但不必进行优化。
+系统必须实现良好定义的语义，用于多客户端并发写同一个文件。
+同步的开销必须保证最小。
+高带宽比低延迟更重要，GFS的应用大多需要快速处理大量的数据，很少会严格要求单一操作的响应时间。
+    
+    MapReduce是一个编程模型，也是一个处理和生成超大数据集的算法模型的相关实现。
+用户首先创建一个Map函数处理一个基于 key/value pair的数据集合，输出中间的基于key/value pair的数据集合；
+然后再创建一个Reduce函数用来合并所有的具有相同中间key值的中间value值。
+MapReduce架构的程序能够在大量的普通配置的计算机上实现并行化处理。
+这个系统在运行时只关心：如何分割输入数据，在大量计算机组成的 集群上的调度，集群中计算机的错误处理，管理集群中计算机之间必要的通信。采用MapReduce架构可以使那些没有并行计算和分布式处理系统开发经验的 程序员有效利用分布式系统的丰富资源。
+    Doug Cutting
+
+Hadoop Modules
+
+Hadoop-Related Projects 
+    warehouse仓库
+    infrastructure基础设施
+    Ad-Hoc 点对点
+
+Hadoop Directory
+    2.8.1
+    wget https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
+    tar -xvaf hadoop-2.8.1.tar.gz
+
+Hadoop Modules Detail
+    workhorses工具
+    periodically周期性的
+    HDFS
+
+## Hadoop Modules Startup
+    Error: JAVA_HOME is not set and could not be found.
+    /usr/lib/jvm/java-8-openjdk-amd64
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://localhost:9000</value>
+</property>
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://u1</value>
+</property>
+u1失败
+
+bin/hdfs dfs -mkdir -p /user/jason
+bin/hdfs dfs -mkdir -p  /user/jason/mapreduce/wordcount/input
+bin/hdfs dfs -put wordcountinput/w.input /user/jason/mapreduce/wordcount/input
+bin/hdfs dfs -cat /user/jason/mapreduce/wordcount/input/w.input
+bin/hdfs dfs -ls /user/jason/mapreduce/wordcount/output/
+bin/hdfs dfs -cat /user/jason/mapreduce/wordcount/output/part-r-00000
+bin/hdfs dfs -rm -R /user/jason/mapreduce/wordcount/output/
+
+<property>
+<name></name>
+<value></value>
+<property/>
+
+etc/hadoop/hdfs-site.xml:
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>

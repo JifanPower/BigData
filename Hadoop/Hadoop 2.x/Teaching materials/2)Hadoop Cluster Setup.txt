@@ -1,0 +1,20 @@
+/**Jason,Jinfan Power 2017.08.05**/
+
+Java
+Ubutntu 16.04
+apt-get update
+apt-get install default-jre
+/usr/lib/jvm/java-8-openjdk-amd64
+
+修改主机名
+Ubutntu 16.04
+vi /etc/hostname
+
+配置Ip映射
+/etc/hosts
+116.62.163.36 u1 
+116.62.168.95 u2 
+116.62.170.155 u3 
+
+Java环境
+/usr/lib/jvm/java-8-openjdk-amd64

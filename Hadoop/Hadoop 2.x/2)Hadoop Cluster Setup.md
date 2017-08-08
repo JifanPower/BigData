@@ -1,27 +1,41 @@
-/**Jason,Jinfan Power 2017.04.06**/
+/**Jason,Jinfan Power 2017.08.07**/
 
-                        Hadoop Cluster Setup
+# Hadoop Cluster Setup
 
-Prerequisites
+## Prerequisites
     Install Java.
     Download a stable version of Hadoop from Apache mirrors.
 	Ssh login without password.[Option]
 
-Associated Files
+## Demon Host
+       u1             u2              u3
+HDFS
+    NameNode
+    DataNode        DataNode        DataNode
+                                    SecondaryNameNode
+
+YARN
+                    ResourceManager
+    NodeManager     NodeManager     NodeManager
+
+MapReduce
+    JobHistoryServer
+
+## Associated Files
     hdfs
-	* hadoop-env.sh
-	* core-site.xml
-	* hdfs-site.xml
-	* slaves
+	* hadoop-env.sh(JAVA_HOME)
+	* core-site.xml(NameNode)
+	* hdfs-site.xml(SecondaryNameNode)
+	* slaves(DataNode)
     yarn
 	* yarn-env.sh
-	* yarn-site.xml
-	* slaves
+	* yarn-site.xml(ResourceManager)
+	* slaves(NodeManager)
     mapreduce
 	* mapred-env.sh
-	* mapred-site.xml
+	* mapred-site.xml(JobHistoryServer)
 
-Configuring Environment of Hadoop Daemons
+# Configuring Environment of Hadoop Daemons
     1)etc/hadoop/hadoop-env.sh
         JAVA_HOME for hdfs node.
     2)etc/hadoop/mapred-env.sh
@@ -29,7 +43,7 @@ Configuring Environment of Hadoop Daemons
     3)etc/hadoop/yarn-env.sh
         JAVA_HOME for yarn node.
 
-Configuring the Hadoop Daemons
+# Configuring the Hadoop Daemons
     hdfs
         etc/hadoop/core-site.xml
         Parameter	        Value           Notes
@@ -63,7 +77,7 @@ Configuring the Hadoop Daemons
                 yarn.log-aggregation-enable         true
                 yarn.log-aggregation.retain-seconds 86400
                 yarn.nodemanager.aux-services       mapreduce_shuffle
-                yarn.nodemanager.resource.memory-mb 1024
+                yarn.nod emanager.resource.memory-mb 1024
             slaves
                 add hostname
 
@@ -75,14 +89,14 @@ Configuring the Hadoop Daemons
 		mapreduce.jobhistory.address	    host:port   default:0.0.0.0:10020
 		mapreduce.jobhistory.webapp.address host:port   default:0.0.0.0:19888
 	
-Distribute   
+# Distribute   
     copy files
         use scp
 
     time sync
         use ntp
 
-Startup
+# Startup
     hdfs
         bin/hdfs namenode -format
         sbin/hadoop-daemon.sh
@@ -98,7 +112,7 @@ Startup
     mapreduce
         no need startup
 
-Test
+# Test
     url
         etc/hadoop/core-site.xml
         Parameter                               ValueFormat         defaultPort
